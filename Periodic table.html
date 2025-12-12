@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Periodic Table </title>
+    <style>
+        :root {
+            --gap: 6px;
+            --bg: #f6fbff;
+            --card: #fff;
+            --accent: #0a36c7;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: #112;
+            padding: 18px;
+        }
+
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--accent);
+            font-size: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: transparent;
+        }
+
+        td,
+        th {
+            border: 1px solid #e8f3fb;
+            padding: 8px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 12px;
+        }
+
+        .cell {
+            min-width: 60px;
+            min-height: 56px;
+            padding: 6px;
+            border-radius: 6px;
+            background: #fff;
+        }
+
+        .symbol {
+            font-weight: 700;
+            font-size: 16px
+        }
+
+        .num {
+            font-size: 11px;
+            color: rgb(56, 56, 116)
+        }
+
+        .name {
+            font-size: 11px;
+            color: rgb(57, 57, 110)
+        }
+
+        .mass {
+            font-size: 11px;
+            color: rgb(66, 66, 111)
+        }
+
+        /* category colours */
+        .alkali {
+            background: #fff7f2
+        }
+
+        .alkaline {
+            background: #f6fff7
+        }
+
+        .transition {
+            background: #f2f8ff
+        }
+
+        .post {
+            background: #fffdf2
+        }
+
+        .metalloid {
+            background: #f9f9f6
+        }
+
+        .nonmetal {
+            background: #f8fff8
+        }
+
+        .halogen {
+            background: #fff8fb
+        }
+
+        .noble {
+            background: #f6f6ff
+        }
+
+        .lanth {
+            background: #fffaf6
+        }
+
+        .actin {
+            background: #fff8fb
+        }
+
+        .empty {
+            background: transparent;
+            border: none
+        }
+
+        /* layout niceties */
+        .legend {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 10px 0 16px;
+        }
+
+        .leg {
+            padding: 6px 8px;
+            background: #fff;
+            border-radius: 6px;
+            border: 1px solid #eef6ff;
+            font-size: 13px
+        }
+
+        .note {
+            font-size: 13px;
+            color: rgb(46, 46, 99);
+            margin-top: 10px
+        }
+
+        @media (max-width:900px) {
+            .cell {
+                min-width: 44px;
+                padding: 6px;
+                font-size: 11px
+            }
+
+            .symbol {
+                font-size: 14px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <header>
+            <h1>Periodic Table (HTML only)</h1>
+            <div class="note"> HTML &amp; elements 1 to 118 (lanthanides &amp; actinides shown separately)
+            </div>
+        </header>
+
+        <div class="legend">
+            <div class="leg">Alkali metals</div>
+            <div class="leg">Alkaline earths</div>
+            <div class="leg">Transition metals</div>
+            <div class="leg">Post-transition metals</div>
+            <div class="leg">Metalloids</div>
+            <div class="leg">Nonmetals</div>
+            <div class="leg">Halogens</div>
+            <div class="leg">Noble gases</div>
+        </div>
+
+        <!-- Main periodic table (periods 1–7) -->
+        <table aria-label="Periodic table">
+            <!-- Row: Period 1 -->
+            <tr>
+                <td class="cell nonmetal">
+                    <div class="num">1</div>
+                    <div class="symbol">H</div>
+                    <div class="name">Hydrogen</div>
+                    <div class="mass">1.008</div>
+                </td>
+                <td class="empty" colspan="16"></td>
+                <td class="cell noble">
+                    <div class="num">2</div>
+                    <div class="symbol">He</div>
+                    <div class="name">Helium</div>
+                    <div class="mass">4.0026</div>
+                </td>
+            </tr>
+
+            <!-- Row: Period 2 -->
+            <tr>
+                <td class="cell alkali">
+                    <div class="num">3</div>
+                    <div class="symbol">Li</div>
+                    <div class="name">Lithium</div>
+                    <div class="mass">6.94</div>
+                </td>
+                <td class="cell alkaline">
+                    <div class="num">4</div>
+                    <div class="symbol">Be</div>
+                    <div class="name">Beryllium</div>
+                    <div class="mass">9.0122</div>
+                </td>
+                <td class="empty" colspan="8"></td>
+                <td class="cell metalloid">
+                    <div class="num">5</div>
+                    <div class="symbol">B</div>
+                    <div class="name">Boron</div>
+                    <div class="mass">10.81</div>
+                </td>
+                <td class="cell nonmetal">
+                    <div class="num">6</div>
+                    <div class="symbol">C</div>
+                    <div class="name">Carbon</div>
+                    <div class="mass">12.011</div>
+                </td>
+                <td class="cell nonmetal">
+                    <div class="num">7</div>
+                    <div class="symbol">N</div>
+                    <div class="name">Nitrogen</div>
+                    <div class="mass">14.007</div>
+                </td>
+                <td class="cell nonmetal">
+                    <div class="num">8</div>
+                    <div class="symbol">O</div>
+                    <div class="name">Oxygen</div>
+                    <div class="mass">15.999</div>
+                </td>
+                <td class="cell halogen">
+                    <div class="num">9</div>
+                    <div class="symbol">F</div>
+                    <div class="name">Fluorine</div>
+                    <div class="mass">18.998</div>
+                </td>
+                <td class="cell noble">
+                    <div class="num">10</div>
+                    <div class="symbol">Ne</div>
+                    <div class="name">Neon</div>
+                    <div class="mass">20.180</div>
+                </td>
+            </tr>
+
+            <!-- Row: Period 3 -->
+            <tr>
+                <td class="cell alkali">
+                    <div class="num">11</div>
+                    <div class="symbol">Na</div>
+                    <div class="name">Sodium</div>
+                    <div class="mass">22.990</div>
+                </td>
+                <td class="cell alkaline">
+                    <div class="num">12</div>
+                    <div class="symbol">Mg</div>
+                    <div class="name">Magnesium</div>
+                    <div class="mass">24.305</div>
+                </td>
+                <td class="empty" colspan="8"></td>
+                <td class="cell post">
+                    <div class="num">13</div>
+                    <div class="symbol">Al</div>
+                    <div class="name">Aluminium</div>
+                    <div class="mass">26.982</div>
+                </td>
+                <td class="cell metalloid">
+                    <div class="num">14</div>
+                    <div class="symbol">Si</div>
+                    <div class="name">Silicon</div>
+                    <div class="mass">28.085</div>
+                </td>
+                <td class="cell nonmetal">
+                    <div class="num">15</div>
+                    <div class="symbol">P</div>
+                    <div class="name">Phosphorus</div>
+                    <div class="mass">30.974</div>
+                </td>
+                <td class="cell nonmetal">
+                    <div class="num">16</div>
+                    <div class="symbol">S</div>
+                    <div class="name">Sulfur</div>
+                    <div class="mass">32.06</div>
+                </td>
+                <td class="cell halogen">
+                    <div class="num">17</div>
+                    <div class="symbol">Cl</div>
+                    <div class="name">Chlorine</div>
+                    <div class="mass">35.45</div>
+                </td>
+                <td class="cell noble">
+                    <div class="num">18</div>
+                    <div class="symbol">Ar</div>
+                    <div class="name">Argon</div>
+                    <div class="mass">39.948</div>
+                </td>
+            </tr>
+
+            <!-- Row: Period 4 -->
+            <tr>
+                <td class="cell alkali">
+                    <div class="num">19</div>
+                    <div class="symbol">K</div>
+                    <div class="name">Potassium</div>
+                    <div class="mass">39.098</div>
+                </td>
+                <td class="cell alkaline">
+                    <div class="num">20</div>
+                    <div class="symbol">Ca</div>
+                    <div class="name">Calcium</div>
+                    <div class="mass">40.078</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">21</div>
+                    <div class="symbol">Sc</div>
+                    <div class="name">Scandium</div>
+                    <div class="mass">44.956</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">22</div>
+                    <div class="symbol">Ti</div>
+                    <div class="name">Titanium</div>
+                    <div class="mass">47.867</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">23</div>
+                    <div class="symbol">V</div>
+                    <div class="name">Vanadium</div>
+                    <div class="mass">50.942</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">24</div>
+                    <div class="symbol">Cr</div>
+                    <div class="name">Chromium</div>
+                    <div class="mass">51.996</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">25</div>
+                    <div class="symbol">Mn</div>
+                    <div class="name">Manganese</div>
+                    <div class="mass">54.938</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">26</div>
+                    <div class="symbol">Fe</div>
+                    <div class="name">Iron</div>
+                    <div class="mass">55.845</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">27</div>
+                    <div class="symbol">Co</div>
+                    <div class="name">Cobalt</div>
+                    <div class="mass">58.933</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">28</div>
+                    <div class="symbol">Ni</div>
+                    <div class="name">Nickel</div>
+                    <div class="mass">58.693</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">29</div>
+                    <div class="symbol">Cu</div>
+                    <div class="name">Copper</div>
+                    <div class="mass">63.546</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">30</div>
+                    <div class="symbol">Zn</div>
+                    <div class="name">Zinc</div>
+                    <div class="mass">65.38</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">31</div>
+                    <div class="symbol">Ga</div>
+                    <div class="name">Gallium</div>
+                    <div class="mass">69.723</div>
+                </td>
+                <td class="cell metalloid">
+                    <div class="num">32</div>
+                    <div class="symbol">Ge</div>
+                    <div class="name">Germanium</div>
+                    <div class="mass">72.630</div>
+                </td>
+                <td class="cell metalloid">
+                    <div class="num">33</div>
+                    <div class="symbol">As</div>
+                    <div class="name">Arsenic</div>
+                    <div class="mass">74.922</div>
+                </td>
+                <td class="cell nonmetal">
+                    <div class="num">34</div>
+                    <div class="symbol">Se</div>
+                    <div class="name">Selenium</div>
+                    <div class="mass">78.971</div>
+                </td>
+                <td class="cell halogen">
+                    <div class="num">35</div>
+                    <div class="symbol">Br</div>
+                    <div class="name">Bromine</div>
+                    <div class="mass">79.904</div>
+                </td>
+                <td class="cell noble">
+                    <div class="num">36</div>
+                    <div class="symbol">Kr</div>
+                    <div class="name">Krypton</div>
+                    <div class="mass">83.798</div>
+                </td>
+            </tr>
+
+            <!-- Row: Period 5 -->
+            <tr>
+                <td class="cell alkali">
+                    <div class="num">37</div>
+                    <div class="symbol">Rb</div>
+                    <div class="name">Rubidium</div>
+                    <div class="mass">85.468</div>
+                </td>
+                <td class="cell alkaline">
+                    <div class="num">38</div>
+                    <div class="symbol">Sr</div>
+                    <div class="name">Strontium</div>
+                    <div class="mass">87.62</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">39</div>
+                    <div class="symbol">Y</div>
+                    <div class="name">Yttrium</div>
+                    <div class="mass">88.906</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">40</div>
+                    <div class="symbol">Zr</div>
+                    <div class="name">Zirconium</div>
+                    <div class="mass">91.224</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">41</div>
+                    <div class="symbol">Nb</div>
+                    <div class="name">Niobium</div>
+                    <div class="mass">92.906</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">42</div>
+                    <div class="symbol">Mo</div>
+                    <div class="name">Molybdenum</div>
+                    <div class="mass">95.95</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">43</div>
+                    <div class="symbol">Tc</div>
+                    <div class="name">Technetium</div>
+                    <div class="mass">98</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">44</div>
+                    <div class="symbol">Ru</div>
+                    <div class="name">Ruthenium</div>
+                    <div class="mass">101.07</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">45</div>
+                    <div class="symbol">Rh</div>
+                    <div class="name">Rhodium</div>
+                    <div class="mass">102.91</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">46</div>
+                    <div class="symbol">Pd</div>
+                    <div class="name">Palladium</div>
+                    <div class="mass">106.42</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">47</div>
+                    <div class="symbol">Ag</div>
+                    <div class="name">Silver</div>
+                    <div class="mass">107.87</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">48</div>
+                    <div class="symbol">Cd</div>
+                    <div class="name">Cadmium</div>
+                    <div class="mass">112.41</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">49</div>
+                    <div class="symbol">In</div>
+                    <div class="name">Indium</div>
+                    <div class="mass">114.82</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">50</div>
+                    <div class="symbol">Sn</div>
+                    <div class="name">Tin</div>
+                    <div class="mass">118.71</div>
+                </td>
+                <td class="cell metalloid">
+                    <div class="num">51</div>
+                    <div class="symbol">Sb</div>
+                    <div class="name">Antimony</div>
+                    <div class="mass">121.76</div>
+                </td>
+                <td class="cell metalloid">
+                    <div class="num">52</div>
+                    <div class="symbol">Te</div>
+                    <div class="name">Tellurium</div>
+                    <div class="mass">127.60</div>
+                </td>
+                <td class="cell halogen">
+                    <div class="num">53</div>
+                    <div class="symbol">I</div>
+                    <div class="name">Iodine</div>
+                    <div class="mass">126.90</div>
+                </td>
+                <td class="cell noble">
+                    <div class="num">54</div>
+                    <div class="symbol">Xe</div>
+                    <div class="name">Xenon</div>
+                    <div class="mass">131.29</div>
+                </td>
+            </tr>
+
+            <!-- Row: Period 6 -->
+            <tr>
+                <td class="cell alkali">
+                    <div class="num">55</div>
+                    <div class="symbol">Cs</div>
+                    <div class="name">Caesium</div>
+                    <div class="mass">132.91</div>
+                </td>
+                <td class="cell alkaline">
+                    <div class="num">56</div>
+                    <div class="symbol">Ba</div>
+                    <div class="name">Barium</div>
+                    <div class="mass">137.33</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">57</div>
+                    <div class="symbol">La</div>
+                    <div class="name">Lanthanum</div>
+                    <div class="mass">138.91</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">72</div>
+                    <div class="symbol">Hf</div>
+                    <div class="name">Hafnium</div>
+                    <div class="mass">178.49</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">73</div>
+                    <div class="symbol">Ta</div>
+                    <div class="name">Tantalum</div>
+                    <div class="mass">180.95</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">74</div>
+                    <div class="symbol">W</div>
+                    <div class="name">Tungsten</div>
+                    <div class="mass">183.84</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">75</div>
+                    <div class="symbol">Re</div>
+                    <div class="name">Rhenium</div>
+                    <div class="mass">186.21</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">76</div>
+                    <div class="symbol">Os</div>
+                    <div class="name">Osmium</div>
+                    <div class="mass">190.23</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">77</div>
+                    <div class="symbol">Ir</div>
+                    <div class="name">Iridium</div>
+                    <div class="mass">192.22</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">78</div>
+                    <div class="symbol">Pt</div>
+                    <div class="name">Platinum</div>
+                    <div class="mass">195.08</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">79</div>
+                    <div class="symbol">Au</div>
+                    <div class="name">Gold</div>
+                    <div class="mass">196.97</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">80</div>
+                    <div class="symbol">Hg</div>
+                    <div class="name">Mercury</div>
+                    <div class="mass">200.59</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">81</div>
+                    <div class="symbol">Tl</div>
+                    <div class="name">Thallium</div>
+                    <div class="mass">204.38</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">82</div>
+                    <div class="symbol">Pb</div>
+                    <div class="name">Lead</div>
+                    <div class="mass">207.2</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">83</div>
+                    <div class="symbol">Bi</div>
+                    <div class="name">Bismuth</div>
+                    <div class="mass">208.98</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">84</div>
+                    <div class="symbol">Po</div>
+                    <div class="name">Polonium</div>
+                    <div class="mass">209</div>
+                </td>
+                <td class="cell halogen">
+                    <div class="num">85</div>
+                    <div class="symbol">At</div>
+                    <div class="name">Astatine</div>
+                    <div class="mass">210</div>
+                </td>
+                <td class="cell noble">
+                    <div class="num">86</div>
+                    <div class="symbol">Rn</div>
+                    <div class="name">Radon</div>
+                    <div class="mass">222</div>
+                </td>
+            </tr>
+
+            <!-- Row: Period 7 -->
+            <tr>
+                <td class="cell alkali">
+                    <div class="num">87</div>
+                    <div class="symbol">Fr</div>
+                    <div class="name">Francium</div>
+                    <div class="mass">223</div>
+                </td>
+                <td class="cell alkaline">
+                    <div class="num">88</div>
+                    <div class="symbol">Ra</div>
+                    <div class="name">Radium</div>
+                    <div class="mass">226</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">89</div>
+                    <div class="symbol">Ac</div>
+                    <div class="name">Actinium</div>
+                    <div class="mass">227</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">104</div>
+                    <div class="symbol">Rf</div>
+                    <div class="name">Rutherfordium</div>
+                    <div class="mass">267</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">105</div>
+                    <div class="symbol">Db</div>
+                    <div class="name">Dubnium</div>
+                    <div class="mass">268</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">106</div>
+                    <div class="symbol">Sg</div>
+                    <div class="name">Seaborgium</div>
+                    <div class="mass">269</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">107</div>
+                    <div class="symbol">Bh</div>
+                    <div class="name">Bohrium</div>
+                    <div class="mass">270</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">108</div>
+                    <div class="symbol">Hs</div>
+                    <div class="name">Hassium</div>
+                    <div class="mass">269</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">109</div>
+                    <div class="symbol">Mt</div>
+                    <div class="name">Meitnerium</div>
+                    <div class="mass">278</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">110</div>
+                    <div class="symbol">Ds</div>
+                    <div class="name">Darmstadtium</div>
+                    <div class="mass">281</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">111</div>
+                    <div class="symbol">Rg</div>
+                    <div class="name">Roentgenium</div>
+                    <div class="mass">282</div>
+                </td>
+                <td class="cell transition">
+                    <div class="num">112</div>
+                    <div class="symbol">Cn</div>
+                    <div class="name">Copernicium</div>
+                    <div class="mass">285</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">113</div>
+                    <div class="symbol">Nh</div>
+                    <div class="name">Nihonium</div>
+                    <div class="mass">286</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">114</div>
+                    <div class="symbol">Fl</div>
+                    <div class="name">Flerovium</div>
+                    <div class="mass">289</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">115</div>
+                    <div class="symbol">Mc</div>
+                    <div class="name">Moscovium</div>
+                    <div class="mass">290</div>
+                </td>
+                <td class="cell post">
+                    <div class="num">116</div>
+                    <div class="symbol">Lv</div>
+                    <div class="name">Livermorium</div>
+                    <div class="mass">293</div>
+                </td>
+                <td class="cell halogen">
+                    <div class="num">117</div>
+                    <div class="symbol">Ts</div>
+                    <div class="name">Tennessine</div>
+                    <div class="mass">294</div>
+                </td>
+                <td class="cell noble">
+                    <div class="num">118</div>
+                    <div class="symbol">Og</div>
+                    <div class="name">Oganesson</div>
+                    <div class="mass">294</div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Lanthanides & Actinides separate rows -->
+        <h3 style="margin-top:16px;margin-bottom:6px;color:var(--accent)">Lanthanides</h3>
+        <table>
+            <tr>
+                <!-- 57-71 -->
+                <td class="cell lanth">
+                    <div class="num">57</div>
+                    <div class="symbol">La</div>
+                    <div class="name">Lanthanum</div>
+                    <div class="mass">138.91</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">58</div>
+                    <div class="symbol">Ce</div>
+                    <div class="name">Cerium</div>
+                    <div class="mass">140.12</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">59</div>
+                    <div class="symbol">Pr</div>
+                    <div class="name">Praseodymium</div>
+                    <div class="mass">140.91</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">60</div>
+                    <div class="symbol">Nd</div>
+                    <div class="name">Neodymium</div>
+                    <div class="mass">144.24</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">61</div>
+                    <div class="symbol">Pm</div>
+                    <div class="name">Promethium</div>
+                    <div class="mass">145</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">62</div>
+                    <div class="symbol">Sm</div>
+                    <div class="name">Samarium</div>
+                    <div class="mass">150.36</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">63</div>
+                    <div class="symbol">Eu</div>
+                    <div class="name">Europium</div>
+                    <div class="mass">151.96</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">64</div>
+                    <div class="symbol">Gd</div>
+                    <div class="name">Gadolinium</div>
+                    <div class="mass">157.25</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">65</div>
+                    <div class="symbol">Tb</div>
+                    <div class="name">Terbium</div>
+                    <div class="mass">158.93</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">66</div>
+                    <div class="symbol">Dy</div>
+                    <div class="name">Dysprosium</div>
+                    <div class="mass">162.50</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">67</div>
+                    <div class="symbol">Ho</div>
+                    <div class="name">Holmium</div>
+                    <div class="mass">164.93</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">68</div>
+                    <div class="symbol">Er</div>
+                    <div class="name">Erbium</div>
+                    <div class="mass">167.26</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">69</div>
+                    <div class="symbol">Tm</div>
+                    <div class="name">Thulium</div>
+                    <div class="mass">168.93</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">70</div>
+                    <div class="symbol">Yb</div>
+                    <div class="name">Ytterbium</div>
+                    <div class="mass">173.05</div>
+                </td>
+                <td class="cell lanth">
+                    <div class="num">71</div>
+                    <div class="symbol">Lu</div>
+                    <div class="name">Lutetium</div>
+                    <div class="mass">174.97</div>
+                </td>
+            </tr>
+        </table>
+
+        <h3 style="margin-top:12px;margin-bottom:6px;color:var(--accent)">Actinides</h3>
+        <table>
+            <tr>
+                <!-- 89-103 -->
+                <td class="cell actin">
+                    <div class="num">89</div>
+                    <div class="symbol">Ac</div>
+                    <div class="name">Actinium</div>
+                    <div class="mass">227</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">90</div>
+                    <div class="symbol">Th</div>
+                    <div class="name">Thorium</div>
+                    <div class="mass">232.04</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">91</div>
+                    <div class="symbol">Pa</div>
+                    <div class="name">Protactinium</div>
+                    <div class="mass">231.04</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">92</div>
+                    <div class="symbol">U</div>
+                    <div class="name">Uranium</div>
+                    <div class="mass">238.03</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">93</div>
+                    <div class="symbol">Np</div>
+                    <div class="name">Neptunium</div>
+                    <div class="mass">237</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">94</div>
+                    <div class="symbol">Pu</div>
+                    <div class="name">Plutonium</div>
+                    <div class="mass">244</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">95</div>
+                    <div class="symbol">Am</div>
+                    <div class="name">Americium</div>
+                    <div class="mass">243</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">96</div>
+                    <div class="symbol">Cm</div>
+                    <div class="name">Curium</div>
+                    <div class="mass">247</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">97</div>
+                    <div class="symbol">Bk</div>
+                    <div class="name">Berkelium</div>
+                    <div class="mass">247</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">98</div>
+                    <div class="symbol">Cf</div>
+                    <div class="name">Californium</div>
+                    <div class="mass">251</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">99</div>
+                    <div class="symbol">Es</div>
+                    <div class="name">Einsteinium</div>
+                    <div class="mass">252</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">100</div>
+                    <div class="symbol">Fm</div>
+                    <div class="name">Fermium</div>
+                    <div class="mass">257</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">101</div>
+                    <div class="symbol">Md</div>
+                    <div class="name">Mendelevium</div>
+                    <div class="mass">258</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">102</div>
+                    <div class="symbol">No</div>
+                    <div class="name">Nobelium</div>
+                    <div class="mass">259</div>
+                </td>
+                <td class="cell actin">
+                    <div class="num">103</div>
+                    <div class="symbol">Lr</div>
+                    <div class="name">Lawrencium</div>
+                    <div class="mass">266</div>
+                </td>
+            </tr>
+        </table>
+
+        <footer style="margin-top:18px;color:rgb(33, 33, 162);font-size:13px;">
+            <div>HTML-only periodic table — elements 1 to 118. DESIGN BY ABDUL WAHAB KHAN .</div>
+        </footer>
+    </div>
+</body>
+
+</html>
